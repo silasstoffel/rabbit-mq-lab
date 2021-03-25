@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+
+  app-web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
+    environment:
+      PHP_EXTENSION_PDOSQLITE: 1
+      PHP_EXTENSION_PDO_SQLITE: 1
+    networks:
+      - app-network
+
+  app-rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - "8090:15672"
+      - "5672:5672"
+    environment:
+        RABBITMQ_DEFAULT_USER: rabbitmq
+        RABBITMQ_DEFAULT_PASS: a1b2c3
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

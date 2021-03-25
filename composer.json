@@ -1,0 +1,16 @@
+{
+  "name": "silasstoffel/lab-rabbitmq",
+  "description": "Laboratório de estudos com RabbitMq",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Silas Stoffel",
+      "email": "silasstofel@example.com"
+    }
+  ],
+  "require": {
+    "php-amqplib/php-amqplib": "^3.0",
+    "ext-json": "*"
+  }
+}
