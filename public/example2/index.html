@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Example - 2</title>
 </head>
 <body>
-<h1>Example 1</h1>
+<h1>2. Work Queues</h1>
 <button type="button" id="btn-send-event">Send Event to Queue</button>
+
+<ul>
+    <li>Click in button to create task</li>
+    <li>In Terminal in background run php worker.php</li>
+</ul>
+
+<hr>
 
 <p>
     <a href="/">Back</a>
@@ -17,7 +24,7 @@
     window.onload = () => {
         document.getElementById('btn-send-event')
             .addEventListener('click', () => {
-                fetch('/example1/publish.php');
+                fetch('/example2/task.php');
             })
     }
 </script>
