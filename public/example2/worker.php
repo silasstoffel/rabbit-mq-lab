@@ -6,7 +6,7 @@ require_once '../../RabbitMQConnection.php';
 
 $connection = RabbitMQConnection::getConnection();
 $channel = $connection->channel();
-$channel->queue_declare('worker-example', false, false, false, false);
+$channel->queue_declare('worker-example', false, true, false, false);
 
 echo ' [*] Waiting for messages. To exit press CTRL+C', PHP_EOL;
 

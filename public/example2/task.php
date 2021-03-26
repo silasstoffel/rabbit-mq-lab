@@ -22,11 +22,12 @@ $data = [
 
 $message = json_encode($data);
 
-$channel->basic_publish(
-    new AMQPMessage($message),
-    '',
-    'worker-example'
+$str = new AMQPMessage(
+    $message,
+    ['delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT]
 );
+
+$channel->basic_publish($str,'','worker-example');
 
 $channel->close();
 $connection->close();
