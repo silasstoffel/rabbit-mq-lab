@@ -14,6 +14,7 @@ $callback = function ($message) {
     $date = new DateTime();
     $body = json_decode($message->body, true);
     $toString = $body['payload']['message'];
+    echo 'Starting ...' . PHP_EOL;
     $m = sprintf(
         '[x] [%s]: %s',
         $date->format('Y-m-d H:i:s'),
@@ -25,13 +26,14 @@ $callback = function ($message) {
     $date = new DateTime();
     echo sprintf('Finish in %s ', $date->format('Y-m-d H:i:s'));
     echo PHP_EOL;
+    $message->ack();
 };
 
 $channel->basic_consume(
     'worker-example',
     '',
     false,
-    true,
+    false,
     false,
     false,
     $callback
