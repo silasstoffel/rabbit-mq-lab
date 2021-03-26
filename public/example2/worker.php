@@ -13,14 +13,13 @@ echo ' [*] Waiting for messages. To exit press CTRL+C', PHP_EOL;
 $callback = function ($message) {
     $date = new DateTime();
     $body = json_decode($message->body, true);
-    $items = $body['payload']['items'];
-    $toString = implode($items);
+    $toString = $body['payload']['message'];
     $m = sprintf(
         '[x] [%s]: %s',
         $date->format('Y-m-d H:i:s'),
         $toString
     );
-    $seconds = rand(5, 20);
+    $seconds = rand(1, 15);
     sleep($seconds);
     echo $m . PHP_EOL;
     $date = new DateTime();
