@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example - 3</title>
+</head>
+<body>
+<h1>3. Publish and Subscribe</h1>
+<button type="button" id="btn-send-event" data-durable="false">Create Log</button>
+
+<ul>
+    <li>Click in button to create log</li>
+    <li>In terminal in background run php receive-logs.php</li>
+    <li>In terminal in background run php receive-logs.php > log_in_file.log</li>
+</ul>
+
+<hr>
+
+<p>
+    <a href="https://www.rabbitmq.com/tutorials/tutorial-three-php.html">Docs</a>
+</p>
+
+<p>
+    <a href="/">Back</a>
+</p>
+
+
+<script type="text/javascript">
+    window.onload = () => {
+        document.getElementById('btn-send-event')
+            .addEventListener('click', () => {
+                fetch('/example3/emit-logs.php');
+            })
+    }
+</script>
+</body>
+</html>
