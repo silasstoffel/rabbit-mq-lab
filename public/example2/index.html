@@ -6,11 +6,13 @@
 </head>
 <body>
 <h1>2. Work Queues</h1>
-<button type="button" id="btn-send-event">Send Event to Queue</button>
+<button type="button" id="btn-send-event" data-durable="false">Send Event to Queue</button>
+<button type="button" id="btn-send-event-durable">Send Event to Queue (durable)</button>
 
 <ul>
     <li>Click in button to create task</li>
     <li>In terminal in background run php worker.php</li>
+    <li>In terminal in background run php worker2.php for message durable</li>
 </ul>
 
 <p>you can run more than one instance of work (php worker.php)</p>
@@ -31,7 +33,12 @@
     window.onload = () => {
         document.getElementById('btn-send-event')
             .addEventListener('click', () => {
-                fetch('/example2/task.php');
+                fetch('/example2/task.php?durable=false');
+            })
+
+        document.getElementById('btn-send-event-durable')
+            .addEventListener('click', () => {
+                fetch('/example2/task.php?durable=true');
             })
     }
 </script>

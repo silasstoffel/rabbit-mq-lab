@@ -8,7 +8,10 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 $connection = RabbitMQConnection::getConnection();
 $channel = $connection->channel();
-$channel->queue_declare('worker-example', false, false, false, false);
+
+$durable = isset($_GET['durable']) && $_GET['durable'] === 'true';
+
+$channel->queue_declare('worker-example', false, $durable, false, false);
 
 $date = new DateTime();
 
@@ -34,7 +37,8 @@ $connection->close();
 
 header("Content-Type: application/json");
 echo json_encode([
-    'message' => 'success'
+    'message' => 'success',
+    'durable' => $durable
 ]);
 
 
